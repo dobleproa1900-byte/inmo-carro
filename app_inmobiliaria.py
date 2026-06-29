@@ -5,7 +5,7 @@ import pandas as pd
 # CONFIGURACIÓN DE LA PÁGINA
 # ==========================================
 st.set_page_config(
-    page_title="Carro Propiedades — InmoIA",
+    page_title="InmoIA — Demo Inmobiliaria — InmoIA",
     page_icon="🏠",
     layout="wide"
 )
@@ -16,20 +16,20 @@ st.set_page_config(
 if "autenticado" not in st.session_state:
     st.session_state.autenticado = False
 
-DEMO_USER = "carro"
-DEMO_PASS = "inmobiliaria2026"
+DEMO_USER = "inmoia"
+DEMO_PASS = "demo2026"
 
 if not st.session_state.autenticado:
     col1, col2, col3 = st.columns([1, 1.2, 1])
     with col2:
         st.markdown("<br><br>", unsafe_allow_html=True)
-        st.markdown("<h1 style='text-align:center'>🏠 Carro Propiedades</h1>", unsafe_allow_html=True)
+        st.markdown("<h1 style='text-align:center'>🏠 InmoIA — Demo Inmobiliaria</h1>", unsafe_allow_html=True)
         st.markdown("<h4 style='text-align:center;color:gray'>Sistema Inteligente de Gestión Inmobiliaria</h4>", unsafe_allow_html=True)
         st.markdown("<br>", unsafe_allow_html=True)
         with st.form("login_form"):
-            usuario = st.text_input("Usuario:", placeholder="carro")
+            usuario = st.text_input("Usuario:", placeholder="inmoia")
             clave = st.text_input("Contraseña:", type="password", placeholder="••••••••")
-            st.caption("ℹ️ Demo: usuario `carro` / contraseña `inmobiliaria2026`")
+            st.caption("ℹ️ Demo: usuario `inmoia` / contraseña `demo2026`")
             if st.form_submit_button("Ingresar", type="primary"):
                 if usuario == DEMO_USER and clave == DEMO_PASS:
                     st.session_state.autenticado = True
@@ -59,8 +59,8 @@ df = pd.DataFrame(PROPIEDADES)
 # ==========================================
 col_titulo, col_logout = st.columns([5, 1])
 with col_titulo:
-    st.title("🏠 Carro Propiedades")
-    st.markdown("### *Tu inmobiliaria de confianza en San Pedro — Powered by IA*")
+    st.title("🏠 InmoIA — Demo Inmobiliaria")
+    st.markdown("### *Sistema Inteligente de Gestión Inmobiliaria — Powered by IA*")
 with col_logout:
     st.markdown("<br>", unsafe_allow_html=True)
     if st.button("🚪 Cerrar sesión"):
@@ -185,7 +185,7 @@ with tab2:
                 respuesta = "No encontré propiedades disponibles con esos criterios. ¿Querés que te contacte con el equipo?"
 
         elif "contacto" in pregunta_lower or "teléfono" in pregunta_lower or "llamar" in pregunta_lower or "hablar" in pregunta_lower:
-            respuesta = "📞 Podés contactar a **Carro Propiedades** por:\n\n- 💬 **WhatsApp:** +54 9 3329 599250\n- 📍 **Oficina:** San Pedro, Buenos Aires\n\n¡Te respondemos a la brevedad!"
+            respuesta = "📞 Podés contactar a **InmoIA — Demo Inmobiliaria** por:\n\n- 💬 **WhatsApp:** +54 9 3329 599250\n- 📍 **Oficina:** San Pedro, Buenos Aires\n\n¡Te respondemos a la brevedad!"
 
         elif len(props_relevantes) > 0:
             respuesta = f"🏠 Encontré **{len(props_relevantes)} propiedad(es)** que puede(n) interesarte:\n\n"
@@ -243,6 +243,6 @@ with tab3:
     st.download_button(
         label="📥 Exportar a CSV",
         data=csv_export,
-        file_name="propiedades_carro.csv",
+        file_name="propiedades_inmoia.csv",
         mime="text/csv"
     )
